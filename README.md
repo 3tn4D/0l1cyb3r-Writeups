@@ -3,9 +3,3 @@
 Some of the challenges i solved during Olicyber Training.🍕🚩
 
 * [`Olimpiadi di Cybersecurity`](https://olicyber.it)
-
-# Repository Structure
-
-1. Introduzione
-2. Challenges
-3. OliCyber2025
