@@ -1,0 +1,17 @@
+cost = ps[choice-1].price * amount;
+
+if(cost >= saldo){
+    puts("Ci hai provato, mi dispiace!");
+    exit(1);
+}
+else{
+    saldo -= cost;
+    ps[choice-1].foo();
+}
+
+
+choice = 3 --> flag
+
+amount = -x --> entra nell'else e esegui funzione flag
+
+flag{n3gat1ve_am0unt_is_n0t_an_am0unt}

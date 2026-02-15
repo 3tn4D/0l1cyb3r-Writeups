@@ -1,0 +1,3 @@
+Analizzare con ghidra, nella sezione exports è presente una variabile "fl4g"
+
+flag{unu53d_v4r5_4r3_5711_c0mp1l3d}
