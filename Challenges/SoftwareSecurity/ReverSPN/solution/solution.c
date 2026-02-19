@@ -48,17 +48,6 @@ void decrypt(unsigned char *ciphertext, unsigned char *output){
     unsigned char riga[8];
     unsigned char risultato[56];
 
-    // Inversione delle box per decriptazione
-    unsigned int P_box_inv[8];
-    unsigned int S_box_inv[256];
-
-    for (int i = 0; i < 8; i++) {
-        P_box_inv[P_box[i]] = i;
-    }
-    for (int i = 0; i < 256; i++) {
-        S_box_inv[S_box[i]] = i;
-    }
-
     int i, j, k;
     for(i = 0; i < 6; i++){
         for(j = 0; j < 8; j++){
