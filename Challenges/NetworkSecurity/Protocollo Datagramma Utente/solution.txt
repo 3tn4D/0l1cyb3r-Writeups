@@ -1,0 +1,5 @@
+SEGUI FLUSSO UDP (flusso [1])
+
+Hello UDP Server, please s3nd me the s3cret
+Hello UDP Client, I will send you the s3cret fl4g, be ready, and listen till the end
+flag{with_UDP_computer_applications_can_send_messages_in_this_c4s3_r3f3rr3d_t0_as_datagr4ms}

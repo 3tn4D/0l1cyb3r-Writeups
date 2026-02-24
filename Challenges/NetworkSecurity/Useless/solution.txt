@@ -1,0 +1,83 @@
+PROPRIETA DEL FILE DI CATTURA
+File
+
+Nome:
+capture.pcapng
+Lunghezza:
+2.714 kB
+Hash (SHA256):
+8c7bdd68820f7e0da3fff47a603de4dd17632ff911ba3468bd726383cc20b2ab
+Hash (SHA1):
+cfe89da84fb8baef9972f1057a886499314ffe35
+Formato:
+Wireshark/... - pcapng
+Incapsulamento:
+Ethernet
+
+Tempo
+
+Primo pacchetto:
+2021-03-22 17:53:35
+Ultimo pacchetto:
+2021-03-22 17:54:07
+Trascorso:
+00:00:31
+
+Cattura
+
+Hardware:
+Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz (with SSE4.2)
+OS:
+Linux 5.7.0-kali1-amd64
+Applicazione:
+Dumpcap (Wireshark) 3.2.5 (Git v3.2.5 packaged as 3.2.5-1)
+
+Interfacce
+
+Interfaccia
+Pacchetti persi
+Filtro di cattura
+Tipo di link
+Dimensione limite del pacchetto (snaplen)
+eth0
+0 (0.0%)
+nessuno
+Ethernet
+262144 byte
+
+Commenti
+flag{4lw4y5_ch3ck_th3_c0mm3nt5}
+Statistiche
+
+Misure
+Catturati
+Visualizzati
+Marcati
+Pacchetti
+3438
+3438 (100.0%)
+—
+Tempo, s
+31.314
+31.314
+—
+PPS medi
+109.8
+109.8
+—
+Dimensione media dei pacchetti, B
+756
+756
+—
+Byte
+2599048
+2599048 (100.0%)
+0
+Byte/s medi
+82 k
+82 k
+—
+Bit/s medi
+663 k
+663 k
+—

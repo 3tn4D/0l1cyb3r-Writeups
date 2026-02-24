@@ -1,0 +1,5 @@
+Edit -> Preferences -> Protocols -> TLS -> (Pre)-Master-Secret log filename
+
+http2 contains "flag"
+
+flag{tls_is_really_hard}

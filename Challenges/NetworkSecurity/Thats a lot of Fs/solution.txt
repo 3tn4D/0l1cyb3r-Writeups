@@ -1,0 +1,6 @@
+eth.type == 0xffff
+
+Inizio dei MAC di destinazione:
+66 6c 61 67 7b 35 74 72 34 6e 67 33 5f 70 34 63 6b 33 74 35 7d
+
+flag{5tr4ng3_p4ck3t5}

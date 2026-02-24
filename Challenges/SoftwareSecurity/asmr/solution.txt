@@ -1,0 +1,27 @@
+80493e9:	00 00                	add    BYTE PTR [eax],al
+80493eb:	00 b8 04 00 00 00    	add    BYTE PTR [eax+0x4],bh
+80493f1:	cd 80                	int    0x80
+80493f3:	c3                   	ret
+80493f4:	4a                   	dec    edx                             => edx = 0x19
+80493f5:	4a                   	dec    edx                             => edx = 0x18
+80493f6:	8a 04 14             	mov    al,BYTE PTR [esp+edx*1]         => edx = 0x17
+80493f9:	02 82 b7 93 04 08    	add    al,BYTE PTR [edx+0x80493b7]
+80493ff:	8a 9a cf 93 04 08    	mov    bl,BYTE PTR [edx+0x80493cf]
+8049405:	68 34 94 04 08       	push   0x8049434
+804940a:	c3                   	ret
+
+8049434:       29 d8                   sub    %ebx,%eax
+8049436:       09 c7                   or     %eax,%edi
+8049438:       4a                      dec    %edx
+8049439:       83 fa 00                cmp    $0x0, %edx
+804943c:       68 18 94 04 08          push   $0x8049418
+8049441:       c3                      ret
+
+8049418:       75 dc                   jne    0x80493f6
+804941a:       83 ff 00                cmp    $0x0,%edi
+804941d:       75 4f                   jne    0x804946e
+804941f:       b9 80 93 04 08          mov    $0x8049380,%ecx
+8049424:       ba 1d 00 00 00          mov    $0x1d,%edx
+8049429:       e8 b9 ff ff ff          call   0x80493e7
+804942e:       68 6c 94 04 08          push   $0x804946c
+8049433:       c3                      ret
