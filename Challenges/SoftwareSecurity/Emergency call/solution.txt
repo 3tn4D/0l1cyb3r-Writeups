@@ -1,0 +1,5 @@
+LINUX KERNEL SYSCALL TABLES: hhttps://www.chromium.org/chromium-os/developer-library/reference/linux-constants/syscalls/
+
+arch 	syscall NR 	    return 	arg0 	arg1 	arg2 	arg3 	arg4 	arg5
+x86_64 	rax 	        rax 	rdi 	rsi 	rdx 	r10 	r8 	    r9
+

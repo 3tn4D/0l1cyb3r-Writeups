@@ -1,0 +1,8 @@
+Flusso TCP 14: Hai vinto!
+
+Mosse:
+sendMove(2, 2) -> {"move":[1,1],"status":"ongoing"} trais.challs.olicyber.it:109:19
+sendMove(2, 1) -> {"move":[2,0],"status":"ongoing"} trais.challs.olicyber.it:109:19
+sendMove(2, 3) 
+
+sendMove(2, 3) -> {"message":"Hai vinto! flag{w4ai7...n0n_val3_e'_c0n7r0_l3_regol3}","move":null,"status":"won"}

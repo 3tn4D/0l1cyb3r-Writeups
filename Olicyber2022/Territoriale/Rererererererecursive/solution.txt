@@ -1,0 +1,19 @@
+serie = (2^n) - 1
+
+(2^1000000 - 1) % 2^64
+((2^1000000 - 1) % 2^64) - (1 % 2^64) = 0 - 1 = -1
+
+si patcha la chiamata serie in modo che ritorni tutti 1
+
+----- Original -----
+00101450 bf 40 42        MOV        EDI,0xf4240
+            0f 00
+00101455 e8 bd fd        CALL       serie                                            undefined serie()
+            ff ff
+
+----- Patched -----
+00101450 48 c7 c0        MOV        RAX,-0x1
+            ff ff ff ff
+00101457 90              NOP
+00101458 90              NOP
+00101459 90              NOP
