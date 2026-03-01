@@ -1,0 +1,20 @@
+<%- include('header') -%>
+
+<div id="content" class="mw-body" role="main">
+
+    <h1>I tuoi contributi</h1>
+
+    <% if (edits.length == 0){ %>
+    Non hai ancora proposto nessuna modifica
+    <% } %>
+
+    <ul>
+        <% for (const edit of edits){ %>
+        <li><a href="/check_edit/<%= edit.id %>"><%= edit.title %></a></li>
+        <% } %>
+    </ul>
+</div>
+
+
+<%- include('navigation', {page_title: 'My edits'}) -%>
+<%- include('footer') -%>

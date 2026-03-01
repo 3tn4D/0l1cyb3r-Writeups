@@ -1,0 +1,23 @@
+<%- include('header') -%>
+
+
+<div id="content" class="mw-body" role="main">
+
+    La tua proposta di modifica è stata registrata
+
+    <% if (title === 'gabibbo'){%>
+    <br>
+    Un admin sta valutando la tua richiesta in questo momento...
+    <%}%>
+    
+    <br>
+    
+    Puoi vedere la richiesta <a href="<%= '/check_edit/' + id %>">qui</a>
+
+</div>
+
+
+
+<%- include('navigation', {page_title: 'Edit'}) -%>
+
+<%- include('footer') -%>

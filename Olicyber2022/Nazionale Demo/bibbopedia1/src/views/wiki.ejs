@@ -1,0 +1,107 @@
+<%- include('header') -%>
+
+
+<div id="content" class="mw-body" role="main">
+	<% if (edit){ %>
+
+	<form method="post">
+		<textarea name="page"><%= page.page %></textarea>
+
+		<button type="submit">Modifica</button>
+	</form>
+	<% } else { %>
+	<%- page.page %>
+	<% }  %>
+</div>
+<div id="mw-data-after-content">
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Menu di navigazione</h2>
+	<div id="mw-head">
+
+		<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu"
+			aria-labelledby="p-personal-label" role="navigation">
+
+			<div class="vector-menu-content">
+
+				<ul class="vector-menu-content-list">
+					<% if (!locals.loggedUser){%>
+					<li id="pt-anonuserpage" class="mw-list-item"><span>Accesso non effettuato</span></li>
+					<li id="pt-anoncontribs" class="mw-list-item"><a href="/edits"><span>contributi</span></a></li>
+					<li id="pt-createaccount" class="mw-list-item"><a href="/signup"><span>registrati</span></a>
+					</li>
+					<li id="pt-login" class="mw-list-item"><a href="/login"><span>entra</span></a></li>
+					<% } else {%>
+					<li id="pt-anonuserpage" class="mw-list-item"><span>Ciao <%= locals.loggedUser %>!</span></li>
+					<li id="pt-anoncontribs" class="mw-list-item"><a href="/edits"><span>contributi</span></a></li>
+					<li id="pt-logout" class="mw-list-item"><a href="/logout"><span>esci</span></a></li>
+					<% } %>
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="left-navigation">
+
+			<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs"
+				aria-labelledby="p-namespaces-label" role="navigation">
+				<label id="p-namespaces-label" aria-label="" class="vector-menu-heading">
+					<span class="vector-menu-heading-label">Namespace</span>
+				</label>
+				<div class="vector-menu-content">
+
+					<ul class="vector-menu-content-list">
+						<li id="ca-nstab-main" class="selected mw-list-item"><a href="#"><span>Voce</span></a></li>
+						<li id="ca-talk" class="mw-list-item"><a href="#"><span>Discussione</span></a></li>
+					</ul>
+
+				</div>
+			</nav>
+
+
+		</div>
+		<div id="right-navigation">
+
+			<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs"
+				aria-labelledby="p-views-label" role="navigation">
+				<label id="p-views-label" aria-label="" class="vector-menu-heading">
+					<span class="vector-menu-heading-label">Visite</span>
+				</label>
+				<div class="vector-menu-content">
+
+					<ul class="vector-menu-content-list">
+						<li id="ca-view" class="<%= edit ? '' : 'selected' %> mw-list-item collapsible"><a
+								href="<%= '/wiki/' + page.title %>"><span>Leggi</span></a>
+						</li>
+						<li id="ca-ve-edit" class="<%= edit ? 'selected' : '' %> mw-list-item collapsible"><a
+								href="<%= '/edit/' + page.title %>">Modifica</a></li>
+						<!--li id="ca-history" class="mw-list-item collapsible"><a href="#"><span>Cronologia</span></a>
+						</li-->
+					</ul>
+
+				</div>
+			</nav>
+
+
+			<div id="p-search" role="search"
+				class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+				<div>
+					<h3>
+						<label for="searchInput">Ricerca</label>
+					</h3>
+					<form id="searchform" class="vector-search-box-form">
+						<div id="simpleSearch" class="vector-search-box-inner" data-search-loc="header-navigation">
+							<input class="vector-search-box-input" type="search" name="search" disabled
+								placeholder="Cerca in Bibbopedia" id="searchInput">
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<%- include('footer') -%>

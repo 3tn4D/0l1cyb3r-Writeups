@@ -34,7 +34,7 @@ def decrypt(cipher):
 
     if s.check() == sat:
         m = s.model()
-        plaintext = ''.join(chr(m[x[i]]) for i in range(n))
+        plaintext = ''.join(chr(m[x[i]].as_long()) for i in range(n))
         return plaintext
 
 

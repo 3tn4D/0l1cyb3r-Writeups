@@ -1,0 +1,43 @@
+<%- include('header') -%>
+
+<div id="content" class="mw-body" role="main">
+    <%- edit.page %>
+</div>
+
+
+<div id="mw-data-after-content" style="padding:1em">
+    <% if(edit.status === 'pending' ){ %>
+    <form method="post" style="margin-bottom: 1em;">
+        Valuta questa proposta di modifica:
+        <button name="yes" type="submit" <%= locals.privileges === 'user'? 'disabled' : ''%>>Approva</button>
+        <button name="no" type="submit" <%= locals.privileges === 'user'? 'disabled' : ''%>>Rifiuta</button>
+    </form>
+    <% }
+
+     if (edit.status === 'pending' && edit.title !== 'gabibbo'){ %>
+
+    <span style="">La modica può essere approvata/rifiutata solo da un editor</span>
+
+    <% } else if (edit.status === 'pending' && edit.title === 'gabibbo'){ %>
+
+    <span style=""> Questa pagina è diversa dalle altre e può essere modificata <b>solo dall'admin</b> </span>
+
+    <% } else if (edit.status === 'approved'){%>
+
+    <span style="color: green;">Complimenti, questa modifica è stata approvata da un editor!
+        <%= edit.title === 'gabibbo' ? locals.FLAG2 : locals.FLAG1 %>
+    </span>
+
+    <% } else if (edit.status === 'rejected'){%>
+
+    <span style="color: red;"> Questa modifica è stata rifiutata da un editor.</span>
+
+    <% } %>
+</div>
+
+
+<%- include('navigation', {page_title: 'Edit'}) -%>
+
+
+
+<%- include('footer') -%>

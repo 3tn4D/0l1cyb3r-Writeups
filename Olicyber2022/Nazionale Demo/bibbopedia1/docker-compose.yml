@@ -1,0 +1,18 @@
+version: "3"
+services:
+  webapp:
+    build: ./src
+    ports:
+      - "3000:3000"
+    environment:
+      - JWT_SECRET_KEY=REDACTED
+      - BOT_URL=http://bot:9999/visit
+      - CHALLENGE_URL=http://webapp:3000
+      - FLAG1=flag{1}
+      - FLAG2=flag{2}
+  bot:
+    build: ./bot
+    environment:
+      - DOMAIN=webapp
+      - PORT=3000
+      - JWT_SECRET_KEY=REDACTED

@@ -1,0 +1,67 @@
+<div id="mw-navigation">
+    <h2>Menu di navigazione</h2>
+    <div id="mw-head">
+
+        <nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu"
+            aria-labelledby="p-personal-label" role="navigation">
+
+            <div class="vector-menu-content">
+
+                <ul class="vector-menu-content-list">
+                    <% if (!locals.loggedUser){%>
+                    <li id="pt-anonuserpage" class="mw-list-item"><span>Accesso non effettuato</span></li>
+                    <li id="pt-anoncontribs" class="mw-list-item"><a href="/edits"><span>contributi</span></a></li>
+                    <li id="pt-createaccount" class="mw-list-item"><a href="/signup"><span>registrati</span></a>
+                    </li>
+                    <li id="pt-login" class="mw-list-item"><a href="/login"><span>entra</span></a></li>
+                    <% } else {%>
+                    <li id="pt-anonuserpage" class="mw-list-item"><span>Ciao <%= locals.loggedUser %>!</span></li>
+                    <li id="pt-anoncontribs" class="mw-list-item"><a href="/edits"><span>contributi</span></a></li>
+                    <li id="pt-logout" class="mw-list-item"><a href="/logout"><span>esci</span></a></li>
+                    <% } %>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="left-navigation">
+
+            <nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs"
+                aria-labelledby="p-namespaces-label" role="navigation">
+                <label id="p-namespaces-label" aria-label="" class="vector-menu-heading">
+                    <span class="vector-menu-heading-label">Namespace</span>
+                </label>
+                <div class="vector-menu-content">
+
+                    <ul class="vector-menu-content-list">
+                        <li id="ca-nstab-main" class="selected mw-list-item"><a
+                                href="#"><span><%= page_title %></span></a></li>
+                    </ul>
+
+                </div>
+            </nav>
+
+
+        </div>
+
+        <div id="right-navigation">
+
+
+            <div id="p-search" role="search"
+                class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+                <div>
+                    <h3>
+                        <label for="searchInput">Ricerca</label>
+                    </h3>
+                    <form id="searchform" class="vector-search-box-form">
+                        <div id="simpleSearch" class="vector-search-box-inner" data-search-loc="header-navigation">
+                            <input class="vector-search-box-input" type="search" name="search" disabled
+                                placeholder="Cerca in Bibbopedia" id="searchInput">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

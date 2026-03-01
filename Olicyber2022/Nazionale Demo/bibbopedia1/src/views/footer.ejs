@@ -1,0 +1,137 @@
+<% if (locals.error){ %>
+<div id="mw-data-after-content" style="padding:1em; color: red;">
+    <%= locals.error ? `Errore: ${locals.error}` : '' %>
+</div>
+<% } %>
+
+<div id="mw-panel">
+    <div id="p-logo" role="banner">
+        <img src="/img/logo.png" />
+    </div>
+
+    <nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal"
+        aria-labelledby="p-navigation-label" role="navigation">
+        <label id="p-navigation-label" aria-label="" class="vector-menu-heading">
+            <span class="vector-menu-heading-label">Navigazione</span>
+        </label>
+        <div class="vector-menu-content">
+
+            <ul class="vector-menu-content-list">
+                <li id="n-mainpage-description" class="mw-list-item"><a href="/" icon="home"><span>Pagina
+                            principale</span></a></li>
+                <li id="n-randompage" class="mw-list-item"><a href="/wiki/gabibbo" icon="die"><span>Una voce a
+                            caso</span></a></li>
+                <li id="n-mobile-frontend-nearby-title" class="mw-list-item"><a href="/wiki/angry gabibbo"><span>Nelle
+                            vicinanze</span></a></li>
+                <li id="n-vetrina" class="mw-list-item"><a href="/wiki/42"><span>La risposta</span></a></li>
+                <li id="n-Sportello-informazioni" class="mw-list-item"><a href="#"><span>Sportello
+                            informazioni</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <nav id="p-Comunità" class="mw-portlet mw-portlet-Comunità vector-menu vector-menu-portal portal"
+        aria-labelledby="p-Comunità-label" role="navigation">
+        <label id="p-Comunità-label" aria-label="" class="vector-menu-heading">
+            <span class="vector-menu-heading-label">Comunità</span>
+        </label>
+        <div class="vector-menu-content">
+
+            <ul class="vector-menu-content-list">
+                <li id="n-portal" class="mw-list-item"><a href="#"><span>Portale
+                            Comunità</span></a></li>
+                <li id="n-sitesupport" class="mw-list-item"><a href="https://donate.wikimedia.org"><span>Fai una
+                            donazione</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label"
+        role="navigation">
+        <label id="p-tb-label" aria-label="" class="vector-menu-heading">
+            <span class="vector-menu-heading-label">Strumenti</span>
+        </label>
+        <div class="vector-menu-content">
+
+            <ul class="vector-menu-content-list">
+                <li id="t-whatlinkshere" class="mw-list-item"><a href="#" accesskey="j"><span>Puntano
+                            qui</span></a></li>
+                <li id="t-specialpages" class="mw-list-item"><a href="/wiki/gabibbo" accesskey="q"><span>Pagine
+                            speciali</span></a></li>
+                <li id="t-permalink" class="mw-list-item"><a href="#"><span>Link
+                            permanente</span></a></li>
+                <li id="t-info" class="mw-list-item"><a href="#"><span>Informazioni pagina</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <nav id="p-coll-print_export" class="mw-portlet mw-portlet-coll-print_export vector-menu vector-menu-portal portal"
+        aria-labelledby="p-coll-print_export-label" role="navigation">
+        <label id="p-coll-print_export-label" aria-label="" class="vector-menu-heading">
+            <span class="vector-menu-heading-label">Stampa/esporta</span>
+        </label>
+        <div class="vector-menu-content">
+
+            <ul class="vector-menu-content-list">
+                <li id="coll-create_a_book" class="mw-list-item"><a href="#"><span>Crea
+                            una PAPERA</span></a></li>
+                <li id="coll-download-as-rl" class="mw-list-item"><a href="#"><span>Scarica
+                            come PDF</span></a></li>
+                <li id="t-print" class="mw-list-item"><a href="#" accesskey="p"><span>Versione
+                            stampabile</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <nav id="p-lang" class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal"
+        aria-labelledby="p-lang-label" role="navigation"><button class="uls-settings-trigger"></button>
+        <label id="p-lang-label" aria-label="" class="vector-menu-heading">
+            <span class="vector-menu-heading-label">In altre lingue</span>
+        </label>
+        <div class="vector-menu-content">
+
+            <ul class="vector-menu-content-list">
+                <li class="interlanguage-link interwiki-en mw-list-item"><a href="#" class="interlanguage-link-target"
+                        lang="en"><span>English</span></a></li>
+                <li class="interlanguage-link interwiki-la mw-list-item"><a href="#" class="interlanguage-link-target"
+                        lang="la"><span>Genovese</span></a></li>
+                <li class="interlanguage-link interwiki-lij mw-list-item"><a href="#" class="interlanguage-link-target"
+                        lang="lij"><span>Ligure</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+
+</div>
+
+<footer id="footer" class="mw-footer" role="contentinfo">
+
+    <ul id="footer-places">
+        <li id="footer-places-privacy"><a href="#">Informativa sulla privacy</a></li>
+        <li id="footer-places-disclaimer"><a href="#">Avvertenze</a></li>
+        <li id="footer-places-mobileview"><a href="#" class="noprint stopMobileRedirectToggle">Versione mobile</a>
+        </li>
+        <li id="footer-places-developers"><a href="#">Sviluppatori</a></li>
+        <li id="footer-places-statslink"><a href="#">Statistiche</a>
+        </li>
+        <li id="footer-places-cookiestatement"><a onclick="alert('I biscotti sono buoni')">Dichiarazione sui cookie</a>
+        </li>
+    </ul>
+
+
+
+</footer>
+
+
+</body>
+
+</html>
