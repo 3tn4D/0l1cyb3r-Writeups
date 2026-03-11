@@ -1,0 +1,3 @@
+COOKIES
+
+session = ' UNION SELECT * FROM tasks WHERE tasks.description LIKE 'Submit%

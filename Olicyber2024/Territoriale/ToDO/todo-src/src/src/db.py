@@ -147,7 +147,7 @@ class DB:
 
     def get_tasks(self, user_id):
         cursor = self.get_cursor()
-        user_id = user_id.replace("'", "''")
+        user_id = user_id.replace("'"       , "''")
 
         cursor.execute(
             """SELECT *
