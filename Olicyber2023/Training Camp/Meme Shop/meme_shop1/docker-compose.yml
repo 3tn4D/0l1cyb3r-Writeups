@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  meme_shop_php:
+    build: .
+    container_name: "meme_shop_php"
+    ports:
+      - "34005:80"
+    privileged: false
+    restart: unless-stopped
+
+  meme_shop_mysql:
+    build: ./db/
+    container_name: "meme_shop_mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    privileged: false
+    restart: unless-stopped

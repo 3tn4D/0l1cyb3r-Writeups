@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  meme_shop_review_php:
+    build: .
+    container_name: "meme_shop_php"
+    ports:
+      - "34006:80"
+    privileged: false
+    restart: unless-stopped
+    environment:
+      - REPORT_URL=http://meme_shop_review_bot:9999/visit/
+
+  meme_shop_review_mysql:
+    build: db/
+    container_name: "meme_shop_mysql"
+    command: --default-authentication-plugin=mysql_native_password
+    privileged: false
+    restart: unless-stopped
+
+  meme_shop_review_bot:
+    build: bot/
+    container_name: meme_shop_review_bot
+    environment:
+      - ADMIN_PASSWORD=REDATTO
+      - DOMAIN=https://meme_shop_review.challs.olicyber.it
+    expose:
+      - 9999
+    privileged: false
+    restart: unless-stopped

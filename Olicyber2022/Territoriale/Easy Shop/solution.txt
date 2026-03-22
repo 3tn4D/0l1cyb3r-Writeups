@@ -1,0 +1,7 @@
+Mandare al bot il link di una pagina html che fa un submit di un form in automatico,
+basta sostituire il report problem con il proprio link:
+
+$ python3 -m http.server 8000
+$ ngrok http 8000
+
+Per blockchain: https://andersbrownworth.com/blockchain/

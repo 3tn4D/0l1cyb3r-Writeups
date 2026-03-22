@@ -1,0 +1,132 @@
+/* https://flatuicolors.com/palette/ca */
+
+/*                      NORMALIZER                    */
+html, body{ margin: 0px; padding: 0px; min-height: 100vh; display: flex; flex-direction: column; font-family: sans-serif; }
+
+
+/*                      BUILDING BLOCKS               */
+.row{ width: 100%; display: flex; flex-direction: row; justify-content: space-evenly; }
+.error-banner{ margin: 10px auto; color: red; }
+.success-banner{ margin: 10px auto; color: green; }
+.col{ display: flex; flex-direction: column; justify-content: space-evenly; }
+
+
+/*                      SECTIONS                      */
+/* Start page-header */
+.page-header{ display: flex; flex-direction: row; justify-content: space-between; align-items: center; background-color: #222f3e; color: #c8d6e5; }
+/* End page-header */
+
+/* Start logo */
+#logo{ padding: 10px; font-size: 35px; font-family: monospace; }
+#logo a{ color: inherit; text-decoration: none; }
+/* End logo */
+
+/* Start Navbar */
+#navbar{ display: flex; flex-direction: row; align-items: center; }
+#navbar ul{ list-style: none; margin: 0px; }
+.nav-item{ display: inline; }
+.nav-item a{ color: #c8d6e5; text-decoration: none; padding-right: 10px; }
+/* End Navbar */
+
+/* Start page-content */
+.page-content{ flex-grow: 2; width: 80%; margin: 0px auto; display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px; }
+/* End page-content */
+
+/* Start footer */
+.page-footer{ background-color: #222f3e; display: flex; align-items: center; justify-content: center; }
+.page-footer img{ display: block; padding: 20px 0px; }
+.page-footer p{ text-align: center; color: #c8d6e5; font-family: monospace; margin-right: 5px; }
+/* End footer */
+
+/* Start splitted-container */
+.splitted-container{ margin: auto; display: flex; flex-direction: row; border-radius: 10px; box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.splitted-container > div{ width: 50%; padding: 50px; }
+.left-container{ border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+.right-container{ background-color: #576574; border-top-right-radius: 10px; border-bottom-right-radius: 10px; color: #fff; }
+.right-container a{ text-decoration: none; }
+.centered-container{ display: flex; flex-direction: column; justify-content: center; }
+/* End splitted-container */
+
+/* Start form controls */
+.form-input{ display: block; margin: 20px auto; border: none; outline-color: black; padding: 10px; }
+.form-input:disabled{ background-color: #aeb4b8; opacity: 1; }
+.form-button{ border-radius: 10px; outline: none; font-size: 1em; padding: 7px; color: white; cursor: pointer; }
+/* End form controls*/
+
+/* Start meme/Title meme box */
+.meme-title-box{ margin: 50px; cursor: pointer; width: 200px; height: 282.84px; border: 1px solid black; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 20px; font-weight: bold; word-break: break-word; }
+#file-input{ display: none; }
+/* End meme/Title meme box */
+
+/* Start progress bar */
+#progress-bar{ width: 100%; margin: 20px; border: 1px solid black; }
+#progress-bar > div{ background-color: green; height: 1em; }
+#progress-bar-label{ margin: 0px; position: absolute; left: 50%; z-index: 1; }
+/* End progress bar */
+
+/* Start meme-row */
+.meme-row{ display: flex; flex-direction: row; justify-content: space-between; margin: 20px auto; border: 1px solid grey; border-radius: 10px; padding: 10px; transition: box-shadow; transition-duration: 0.2s; width: 500px}
+.meme-row:hover{ box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+.meme-text{ width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
+.meme-button{ align-self: center; border-radius: 10px; outline: none; border: none; color: white; cursor: pointer; }
+.meme-button *{ color: inherit; display: block; padding: 15px; text-decoration: none; margin: 0px; }
+/* End meme-row */
+
+/* Start description-value row*/
+.description-name{ font-weight: bold; font-size: 17px; }
+.description-value{ font-size: 17px; font-style: italic; }
+/* End description-value row*/
+
+/*
+ * Inspired from https://codepen.io/hesguru/pen/BaybqXv
+ */
+/* Start star rating */
+.star{ display: inline; font-size: 30px; color:#ccc; }
+.star:before{ content: '\2605'; }
+.star-radio{ display: none; }
+.reversed{ display: flex; flex-direction: row-reverse; justify-content: flex-end; }
+.active, .star-radio:checked ~ .star{ color: rgb(231, 231, 38); }
+/* End star rating */
+
+/* Start review */
+.review-top{ display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; padding: 10px; }
+.review-title{ font-weight: bold; font-size: 20px; }
+.review-text{ padding: 20px; }
+/* End review */
+
+
+/*                      ATTRIBUTES                    */
+.center{ text-align: center; }
+.form-background{ background-color: #eee; }
+.d-block{ display: block; }
+.background-red{ background-color:#ee5253; }
+.text-white{ color: white; }
+.show{ display: block; }
+.space-between{ justify-content: space-between; }
+.flex-center{ justify-content: center; }
+.start{ justify-content: start; }
+.p-10{ padding: 10px; }
+.p-20{ padding: 20px; }
+.m-10{ margin: 10px; }
+.reset-cursor{ cursor: default; }
+.w-100{ width: 100%; }
+
+
+/*                      MISC                          */
+textarea{ resize: none; }
+label .form-input{ display: inline; }
+#clip{
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    font-size: 30px;
+    background-color: #576574;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    cursor: pointer;
+}

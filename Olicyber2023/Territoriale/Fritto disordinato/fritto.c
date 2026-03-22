@@ -152,7 +152,7 @@ int main() {
     menu();
     safe_scanf(&choice);
     switch (choice) {
-    case 0:
+    case 0: 
       store_num(vec);
       break;
     case 1:

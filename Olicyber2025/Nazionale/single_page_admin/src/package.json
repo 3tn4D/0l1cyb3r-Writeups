@@ -1,0 +1,31 @@
+{
+  "name": "chall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch --no-deprecation index.ts",
+    "build": "tsc",
+    "prettier": "prettier --plugin=prettier-plugin-ejs --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/node": "^22.15.17",
+    "prettier": "^3.5.3",
+    "prettier-plugin-ejs": "^1.0.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

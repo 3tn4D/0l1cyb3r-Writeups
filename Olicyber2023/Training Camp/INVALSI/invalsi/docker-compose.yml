@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  invalsi_flask:
+    build: .
+    container_name: invalsi_flask
+    expose:
+      - 5000
+    privileged: false
+    restart: unless-stopped
+    environment:
+      - FLAG=flag{REDATTO}
+    ports:
+      - "34002:5000"

@@ -1,0 +1,6 @@
+Per estrarre immagini:
+    $ binwalk belandi       =>      per offset
+
+    $ dd if=belandi of=output.jpg bs=1 skip=OFFSET
+
+Analizzando poi la gif con GIMP si vede su uno dei frame la flag.

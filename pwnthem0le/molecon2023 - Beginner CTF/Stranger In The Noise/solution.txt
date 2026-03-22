@@ -1,0 +1,7 @@
+sox song.wav -n spectrogram
+
+swp{v0p3wk1qj_1q_b0xu_h4u5_z4v_vr_4qq0b1qj}
+
+https://www.dcode.fr/caesar-cipher
+
+ptm{s0m3th1ng_1n_y0ur_e4r5_w4s_so_4nn0y1ng}
