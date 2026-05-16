@@ -38,4 +38,3 @@ while livello.startswith(b"Livello"):
     r.sendline(res)
     r.recvlines(2)
     livello = r.recvline()
-

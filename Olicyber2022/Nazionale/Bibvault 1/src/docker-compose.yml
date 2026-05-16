@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  secretftp:
+    image: kibatic/proftpd
+    restart: unless-stopped
+    expose:
+      - "21"
+      - "50000-50100"
+    environment:
+      "MASQUERADE_ADDRESS": "secretftp"
+    volumes:
+      - ./flag2:/srv/ftp/flag:ro
+      - ./proftpd.conf:/etc/proftpd/proftpd.conf:ro
+  bibvault:
+    ports:
+      - "12314:3000"
+    volumes:
+      - ./flag1:/users/4ad7010f02bb75cbf2912af5c77a6195fefbcfc6ad3d511131ad5040b92269a3/flag:ro
+    build:
+      context: ./src

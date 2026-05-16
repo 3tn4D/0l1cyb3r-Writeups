@@ -1,0 +1,7 @@
+services:
+    apache:
+        build: .
+        ports:
+            - '40003:80'
+        environment:
+            FLAG: flag{REDACTED}

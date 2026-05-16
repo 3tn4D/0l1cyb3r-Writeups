@@ -1,4 +1,3 @@
-
 const HEADLESS_URL = process.env['HEADLESS_URL'] || 'http://headless:5000/'
 const HEADLESS_SECRET = process.env['HEADLESS_SECRET'] || 'supersecret'
 const CHALLENGE_HOST = process.env['CHALLENGE_HOST'] || 'web'
@@ -16,7 +15,7 @@ async function visit_url(url){
                 actions:[
                     {'type':'request','url':'http://' + CHALLENGE_HOST},
                     {'type':'set-cookie','name':'flag','value':FLAG},
-                    {'type':'request','url':url},
+                    {'type':'request','url' :url},
                     {'type':'sleep','time':1}
                 ]
             })

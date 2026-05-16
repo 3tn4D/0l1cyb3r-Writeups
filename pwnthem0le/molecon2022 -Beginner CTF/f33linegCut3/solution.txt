@@ -1,0 +1,9 @@
+$ exiftool selfie.jpeg
+
+b = "010101000110100001100101010011010110100101100111011010000111010001111001010100000110000101110111"
+passwd = "".join(chr(int(b[i:i+8], 2)) for i in range(0, len(b), 8))
+
+passwd = TheMightyPaw
+
+
+Estrarre zip (trovato con Aperi'Solve in steghide) con la passwd trovata. 0_0

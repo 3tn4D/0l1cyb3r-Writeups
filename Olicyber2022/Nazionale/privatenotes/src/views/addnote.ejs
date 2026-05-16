@@ -1,0 +1,48 @@
+<%- include('header') -%>
+
+    <div class="container">
+        <div class="col-lg-4 col-md-6 mx-auto">
+
+
+            <form>
+                <div class="input-group my-3">
+                    <input class="form-control" id="content" name="content" placeholder="Contenuto" type="text">
+                    <button class="btn btn-primary" type="submit">Crea</button>
+
+                </div>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script nonce="<%= locals.csp_nonce %>">
+        function submitNote(e) {
+            e.preventDefault()
+            const content = document.getElementById('content').value
+            const el = document.getElementById('result')
+
+            fetch('/api/note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content })
+            }).then(r => r.json()
+                .then(j => {
+                    if (j.noteid !== undefined) {
+                        location.href = `/notes#${j.noteid}`
+                        el.innerHTML = `created, open it <a href="/notes#${j.noteid}">here</a>`
+                    } else {
+                        el.innerHTML = 'error'
+                    }
+                }).catch(e => el.innerHTML = 'error')
+            ).catch(e => el.innerHTML = 'error')
+
+        }
+
+        document.getElementsByTagName('form')[0].addEventListener('submit', submitNote)
+
+    </script>
+
+    <%- include('footer') -%>

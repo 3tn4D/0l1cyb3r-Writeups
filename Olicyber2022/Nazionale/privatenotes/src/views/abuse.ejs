@@ -1,0 +1,52 @@
+<%- include('header') -%>
+
+    <div class="container">
+        <div class="col-lg-4 col-md-6 mx-auto text-center">
+
+            <h4 class="my-3">Manda un link da controllare</h4>
+
+            <form>
+                <div class="input-group my-3">
+                    <input class="form-control" id="link" name="link" placeholder="http://..." type="text">
+                    <button class="btn btn-primary" type="submit">Invia</button>
+
+                </div>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script nonce="<%= locals.csp_nonce %>">
+        function submitLink(e) {
+            e.preventDefault()
+            const link = document.getElementById('link').value
+            document.getElementById('link').value = ''
+            const el = document.getElementById('result')
+
+            fetch('/api/abuse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ link })
+            }).then(r => {
+                if (r.status === 200) {
+                    r.json()
+                        .then(j => {
+                            el.innerHTML = `<p style="color: green;">${j.msg}</p>`
+                        })
+                } else {
+                    r.json()
+                        .then(j => {
+                            el.innerHTML = `<p style="color: red;">${j.msg}</p>`
+                        })
+                }
+            }).catch(e => el.innerHTML = '<p style="color: red;">Error!</p>')
+        }
+
+        document.getElementsByTagName('form')[0].addEventListener('submit', submitLink)
+
+    </script>
+
+    <%- include('footer') -%>

