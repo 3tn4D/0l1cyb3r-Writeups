@@ -1,0 +1,76 @@
+;; wasm-decompile chall.wasm -o chall.dcmp
+
+export memory memory(initial: 256, max: 256);
+
+global SP:int = 5244176;
+
+data MEM(offset: 1024) =
+  "*9g~q-!!rCA:\09\0c\04\05RB@\19\0awQB\05#6[\0cgf"\00K'8Grn[u+,2^SGZ"ptm"
+  "{\00what's this?\00zzz...\00\00\00\00\00\00\00thx ...zzzzzz...\00*";
+data d_b(offset: 1136) = "\10\05P";
+
+export function start() {
+  nop
+}
+
+export function stackRestore(a:int) {
+  SP = a
+}
+
+export function stackAlloc(a:int):int {
+  a = SP - a & -16;
+  SP = a;
+  return a;
+}
+
+export function stackSave():int {
+  return SP
+}
+
+export function review(note_ptr:byte_ptr):int {
+  var cnt:int = 1124[0]:int;
+  var prev:int = xor_update(note_ptr[0]);
+
+
+  return {
+           ;; First 4 characters must match "ptm{"
+           if (cnt <= 3) {
+             1091;
+             if ((cnt + 1073)[0]:ubyte == (prev & 255)) goto B_valid;
+             goto B_reset;
+           }
+
+
+           ;; After first 3 notes, check each char is printable ASCII
+           if ((prev + -32 & 255) > 94) goto B_reset;
+
+
+           1091;  ;; "correct so far" return value
+           if (cnt != 47) goto B_valid; ;; not last char yet → continue
+
+
+           ;; Last character (position 47): must be '}'
+           select_if(1104, 1078, prev == 125);
+
+
+           label B_valid:
+           ;; Character was correct, return 1091 = "keep going"
+         }
+
+
+  label B_reset:
+  ;; Wrong input — reset everything back to initial state
+  MEM[97]:byte = 42;
+  1124[0]:int = 0;
+  return 1078;
+}
+
+function xor_update(note:int):int {
+  var cnt:int;
+  1124[0]:int = (cnt = (1124[0]:int + 1) % 49);
+  MEM[97]:byte =
+    (note = 
+       MEM[97]:ubyte ^ ((cnt + 1024)[0]:ubyte ^ note));
+  return (note << 24) >> 24;
+}
+

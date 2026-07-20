@@ -1,6 +1,6 @@
 from pwn import *
 
-r = remote("10.45.1.2", 54323)
+r = remote("super-secure-bank.challs.olicyber.it", 38080)
 # r = process("./supersecurebank")
 
 r.sendlineafter(b"Choice: ", b"1")

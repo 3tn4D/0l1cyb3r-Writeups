@@ -11,3 +11,4 @@ for i in chiper:
         curr = i
     
     cont += 1
+print("}")
