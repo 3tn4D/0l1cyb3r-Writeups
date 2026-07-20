@@ -362,6 +362,7 @@ si sta chiedendo al server DNS:
 Questo è esattamente ciò che fanno anche i server di posta quando verificano le politiche SPF di un dominio.
 
 ***
+***
 
 # Soluzione della challenge
 
